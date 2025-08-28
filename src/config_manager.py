@@ -28,10 +28,11 @@ class ConfigManager:
             with open(self.config_path, 'r', encoding='utf-8') as file:
                 return yaml.safe_load(file) or {}
         except Exception as e:
-            # print(f"加载配置文件失败: {e}")
+            print(f"加载配置文件失败: {e}")
             return self._get_default_config()
 
-    def _get_default_config(self) -> Dict[str, Any]:
+    @staticmethod
+    def _get_default_config() -> Dict[str, Any]:
         """获取默认配置"""
         return {
             'config_name': {

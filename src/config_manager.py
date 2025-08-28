@@ -108,6 +108,7 @@ class ConfigManager:
         """获取启用的模块列表"""
         return self.get('modules.enabled', [])
 
+    # 获取配置文件
     def get_network_config(self) -> Dict[str, Any]:
         """获取网络配置"""
         return self.get('network', {})

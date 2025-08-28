@@ -8,7 +8,7 @@
 
 import yaml
 from pathlib import Path
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 
 class ConfigManager:
@@ -34,21 +34,10 @@ class ConfigManager:
     def _get_default_config(self) -> Dict[str, Any]:
         """获取默认配置"""
         return {
-            'app': {
-                'name': 'CommandInjector',
-                'version': '1.0.0'
-            },
-            'config_file': {
-                'path': '',
-                'statu': False
-            },
-            'network': {
-                'default_ip': '',
-                'default_port': ''
-            },
-            'authentication': {
-                'username': '',
-                'password': ''
+            'config_name': {
+                'value_1': '',
+                'value_2': '',
+                'value_3': ''
             }
         }
 
@@ -104,15 +93,17 @@ class ConfigManager:
         """重新加载配置文件"""
         self.config = self._load_config()
 
-    def get_modules(self) -> List[str]:
-        """获取启用的模块列表"""
-        return self.get('modules.enabled', [])
-
     # 获取配置文件
-    def get_network_config(self) -> Dict[str, Any]:
-        """获取网络配置"""
-        return self.get('network', {})
-
-    def get_auth_config(self) -> Dict[str, Any]:
-        """获取认证配置"""
-        return self.get('authentication', {})
+    def get_custom_config(self) -> Dict[str, Any]:
+        return self.get('config_name', {})
+    # def get_modules(self) -> List[str]:
+    #     """获取启用的模块列表"""
+    #     return self.get('modules.enabled', [])
+    #
+    # def get_network_config(self) -> Dict[str, Any]:
+    #     """获取网络配置"""
+    #     return self.get('network', {})
+    #
+    # def get_auth_config(self) -> Dict[str, Any]:
+    #     """获取认证配置"""
+    #     return self.get('authentication', {})
